@@ -1,0 +1,55 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "New";
+
+    //cast drop down list
+
+    SelectList deptlist = new SelectList(ViewBag.DeptDropDownList, "Id", "Name");
+}
+
+<h1>New</h1>
+
+<form asp-action="SaveNew" asp-controller="Employee" >
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" class="form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+        @* <input asp-for="Image" class="form-control" type="file"/> *@
+    </div>
+    
+    <div>
+        <label asp-for="Dept_Id"></label>
+        @* <input asp-for="Dept_Id" class="form-control" /> *@
+        <select asp-for="Dept_Id" class="form-control" asp-items="deptlist">
+            <option value="0">Select Department</option>
+        </select>
+        <span asp-validation-for="Dept_Id" class="text-danger"></span>
+    </div>
+    <input  type="submit" value="Add" class="btn btn-success"/>
+
+</form>
+
+@* for the page to under stand jquer and validation and unobtrusive in tage helper *@
+@section Scripts{
+    @* <script src="~/lib/jquery/dist/jquery.js"></script> *@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

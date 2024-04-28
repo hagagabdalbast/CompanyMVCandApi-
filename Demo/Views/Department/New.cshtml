@@ -1,0 +1,37 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+<br />
+@* <a href="/Department/Index" class="btn btn-success">Back To List</a>
+ *@<br />
+@* @Html.ActionLink("Back to List Html Helper", "Index", "Department",new{@class="btn btn-success"})
+ *@
+<a asp-action="Index" asp-controller="Department" class="btn btn-success">Back To List</a>
+
+<form method="post" asp-controller="Department" asp-action="SaveNew">
+
+    <div>
+        @* <label>Name</label>
+        @* <input type="text" name="Name" class="form-control" value="@Model.Name" /> *@
+        <!--Html Helper-->
+       @*  @Html.TextBox("Name"); *@
+      @*   @Html.LabelFor(s=>s.Name) *@
+       @*  @Html.TextBoxFor(s => s.Name, new { style = "color:red", placeholder = "Enter Dept Name",@class="form-control"}) *@
+      @*   @Html.EditorFor(s => s.Name, new { HtmlAttributes = new { style = "color:red", placeholder = "Enter Dept Name", @class = "form-control" } }) *@
+           <!--TagHelper-->
+        <label asp-for="Name" placeholder="Enter Dept Name"></label>
+        <input asp-for="Name" class="form-control" />
+           
+    </div>
+    <div>
+       @*  <label>Manager Name</label> *@
+        @Html.LabelFor(s => s.MangerName)
+        @Html.TextBoxFor(s => s.MangerName, new { style = "color:red", placeholder = "Enter Manager Name", @class = "form-control" })
+       @*  <input type="text" name="MangerName" class="form-control" value="@Model.MangerName" /> *@
+    </div>
+    <input type="submit" value="Add" class="btn btn-success"/>
+  
+</form>

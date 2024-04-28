@@ -1,0 +1,39 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "ShowEmployeeDepartment";
+    //to show the selected departments
+    SelectList deptList=new SelectList(Model,"Id","Name");
+}
+
+<h1>ShowEmployeeDepartment</h1>
+
+<select name="dept" id="dept" class="form-control" asp-items="deptList" onchange="GetEmployee()">
+    <option value="0">--Select Department--</option>
+</select>
+<br>
+<br />
+<select name="emps" id="emps" class="form-control" >
+
+</select>
+
+@section Scripts{
+    <script>
+        function GetEmployee(){
+            var dept_Id = document.getElementById("dept").value;
+            console.log(dept_Id);
+            $.ajax({
+
+                url: "/Department/ShowEmployeePerDepartment", 
+                data: { "deptId":dept_Id },
+                success: function (result) {
+                    console.log(result);
+                    document.getElementById("emps").innerHTML = "";//clear select
+                    for (let emp of result) {
+                        document.getElementById("emps").innerHTML +=
+                            "<option value='" + emp.id + "'>" + emp.name + "</option>";
+                    }
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,16 @@
+﻿ @model Employee
+
+ <div class="card" style="width:500px" >
+    <img class="card-img-top" src="/Images/@Model.Image" alt="Card image" style="width:100%" />
+     <div>
+         <h4 class="card-body">@Model.Name</h4>
+         <p class="card-text">
+             @Model.Address _ @Model.Salary _ @Model.Department
+             </p>
+        <a href="/Employee/Edit/@Model.Id" class="btn btn-primary">Edit</a>
+
+        <a href="/Employee/Details/@Model.Id" class="btn btn-primary">Details</a>
+        @*  <a href="#" class="btn btn-primary"></a> *@
+     </div>
+
+ </div>

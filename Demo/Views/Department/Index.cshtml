@@ -1,0 +1,31 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<a href="/Department/New" class="btn btn-success">New Department</a>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>ManagerName</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.MangerName</td>
+        </tr>
+    }
+
+</table>
+
+@* for any scripts you want to add to the layout *@
+
+@section Scripts{
+<script>
+
+</script>
+}
